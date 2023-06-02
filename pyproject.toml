@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "finance-management-app"
+version = "0.1.0"
+description = "Dashboard for managing finances."
+authors = ["Aaron <aaronginder@hotmail.co.uk>"]
+readme = "README.md"
+packages = [{include = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+poerty = "1.5.1"
+streamlit = "^1.23.1"
+pandas = "^2.0.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.semantic_release]
+version_variable = [
+    "src_folder/__init__.py:__version__",
+    "pyproject.toml:version"
+]
+branch = "master"
+upload_to_pypi = false
+upload_to_release = true
+build_command = "pip install poetry && poetry build"

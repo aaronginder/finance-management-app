@@ -1,26 +1,20 @@
-name: Release
-on:
-  push:
-    branches: [master]
-
 jobs:
-  release:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Semantic Release
-        uses: cycjimmy/semantic-release-action@v2
-        id: semantic
+    Quality:
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
         with:
-          semantic_version: 17
-          extra_plugins: |
-            @semantic-release/changelog
-            @semantic-release/git
-            conventional-changelog-eslint
-          branches: |
-            ['master']
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_RELEASE_TOKEN }}
+          python-version: 3.8
+          - name: Install Python Poetry
+          uses: abatilo/actions-poetry@v2.1.0
+          with:
+            poetry-version: 1.1.2
+        - name: Configure poetry
+          shell: bash
+          run: python -m poetry config virtualenvs.in-project true
+        - name: View poetry version
+          run: poetry --version
+        - name: Install dependencies
+          run: |
+            python -m poetry install
