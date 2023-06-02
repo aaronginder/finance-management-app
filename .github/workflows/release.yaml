@@ -20,7 +20,7 @@ jobs:
             @semantic-release/changelog
             @semantic-release/git
             conventional-changelog-eslint
-          branches: 
+          branches: |
             ['master']
         env:
           GITHUB_TOKEN: ${{ secrets.GH_RELEASE_TOKEN }}
