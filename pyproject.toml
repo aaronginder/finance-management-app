@@ -8,7 +8,6 @@ packages = [{include = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-poerty = "1.5.1"
 streamlit = "^1.23.1"
 pandas = "^2.0.2"
 
